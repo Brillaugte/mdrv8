@@ -1,4 +1,44 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+function Balance() {
+  const [balance, setBalance] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchBalance() {
+      try {
+        const response = await fetch('/api/balance');
+        const data = await response.json();
+        setBalance(data);
+        setLoading(false);
+      } catch (error) {
+        console.error('Failed to fetch balance:', error);
+        setLoading(false);
+      }
+    }
+    fetchBalance();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!balance) {
+    return <div>Error fetching balance</div>;
+  }
+
+  return (
+    <div>
+      <h1>Balance</h1>
+      <pre>{JSON.stringify(balance, null, 2)}</pre>
+    </div>
+  );
+}
+
+export default Balance;
+
+
+/*import React, { useState } from 'react';
 
 
 const BinanceOpenTradeComponent = () => {
@@ -73,3 +113,4 @@ const BinanceOpenTradeComponent = () => {
 };
 
 export default BinanceOpenTradeComponent;
+*/
