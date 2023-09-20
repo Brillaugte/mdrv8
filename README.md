@@ -1,14 +1,6 @@
-# NFT Marketplace V3
+# Microderiv Front Test
 
 Create an NFT marketplace on top of your NFT collection on **any** EVM-compatible blockchain.
-
-## Installation
-
-Install via [thirdweb create](https://portal.thirdweb.com/cli/create)
-
-```bash
-  npx thirdweb create --template marketplace-v3
-```
 
 ## Run Locally
 
